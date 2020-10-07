@@ -13,34 +13,54 @@ const connection = mysql.createConnection({
 });
 
 connection.connect(err => {
-    if(err)
+    if (err)
         throw err;
+
+    mainMenu();
 });
 
-const mainMenu = [
-    {
-        type: "list",
-        name: "selection",
-        message: "What would you like to do?",
-        choices: [
-            "Add department",
-            "View departments",
-            "Add role",
-            "View roles",
-            "Add employee",
-            "View employees",
-            "Update employee role",
-            "Exit"
-        ]
-    }
-];
-
-
-// function to initialize main menu
-function init() {
-    inquirer.prompt(mainMenu).then(function(answers) {
-})};
-
-
-init();
-
+const mainMenu = () => {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "choice",
+            message: "What would you like to do?",
+            choices: [
+                "Add department",
+                "View departments",
+                "Add role",
+                "View roles",
+                "Add employee",
+                "View employees",
+                "Update employee role",
+                "Exit"
+            ]
+        }
+    ]).then(({choice}) => {
+		switch(choice) {
+            case "Add department":
+				addDept();
+                break;
+            case "View departments":
+                viewDepts();
+                break;
+            case "Add role":
+                addRole();
+                break;
+            case "View roles":
+                viewRoles();
+                break;
+            case "Add employee":
+                addEmployee();
+                break;
+            case "View employees":
+                viewEmployees();
+                break;
+             case "Update employee roles":
+                updateRoles();
+                break;
+			case "Exit":
+				connection.end();
+		}
+	});
+};
