@@ -196,7 +196,6 @@ const addEmployee = () => {
                     if (err)
                         throw err;
                     console.log(answer.firstName + answer.lastName + " has successfully been added!");
-                    viewEmployees();
                     mainMenu();
                 });
             });

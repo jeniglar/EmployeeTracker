@@ -4,6 +4,12 @@
 ## Description 
 I have created a command line Employee Tracker database designed  to be used in an office environment. This application allows a manager to easily keep track of all employees, departments, roles, and various other information. The manager may add, view, sort, and update employees by folowing the command line prompts. 
 
+Video Demonstration: https://drive.google.com/file/d/12x3OjU6xhZoGW9qRCQRNkEwXSJ_OwUN5/view?usp=sharing
+
+<p align="center">
+<img width ="80%" src="screenshot.png" alt="Employee Tracker App">
+</>
+
 
 ## Table of Contents
 - [Installation](#installation)
