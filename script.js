@@ -25,7 +25,7 @@ const mainMenu = () => {
             type: "list",
             name: "choice",
             message: "What would you like to do?",
-            choices: [
+            choice: [
                 "View employees",
                 "View departments",
                 "View roles",
@@ -65,16 +65,91 @@ const mainMenu = () => {
 	});
 };
 
+
+const addDept = () => {
+    inquirer.prompt({
+			name: "deptName",
+			type: "input",
+			message: "What is the department name?"
+        }).then((answer) => {
+		connection.query('INSERT INTO departments(name) VALUES("${answer.deptName}");', function(err, res) {
+			if(err)
+				throw err;
+			console.log("This Department has successfully been added!");
+			mainMenu();
+		});
+	});
+};
+
+const addRole = () => {
+    const departments =
+        inquirer.prompt([
+            {   
+                name: "title",
+                type: "input",
+                message: "What is the title of the role?"},
+            {
+                name: "salary",
+                type: "input",
+                message: "What is the salary of the role?"},
+            {
+                name: "departmentId",
+                type: "list",
+                message: "What department does the role belong to?",
+                choices: departments
+            }
+        ]).then((answers) => {
+            connection.query("INSERT INTO roles(title, salary, departmentId) VALUES(?, ?, ?)",  function(err, postData) {
+                if(err)
+                    throw err;
+                console.log("This role has successfully been added!");
+    
+                mainMenu();
+            });
+        });
+    };
+
+const addEmployee = () => {
+    const roles = 
+    const managers = 
+    inquirer.prompt([
+        {
+            name: "firstName",
+            type: "input",
+            message: "What is the employee's first name?"
+        },
+        {
+            name: "lastName",
+            type: "input",
+            message: "What is the employee's last name?"
+        },
+        {
+            name: "roleId",
+            type: "list",
+            message: "What is the employee's role?",
+            choices: roles
+        }
+        {
+            name: "managerId",
+            type: "list",
+            message: "Who is the employee's manager?",
+            choices: managers
+        }
+    ]).then((answers) => {
+        connection.query("INSERT INTO employees(firstName, lastName, roleId, managerId) VALUES(?, ?, ?)", function(err, postData) {
+            if(err)
+                throw err;
+            console.log("This Employee has successfully been added!");
+
+            mainMenu();
+        });
+    });
+};
+
 // const viewEmployees = () => {
 
 // const viewDepts = () => {
 
 // const viewRoles = () => {
-
-// const addEmployee = () => {
-
-// const addDept = () => {
-
-// const addRole = () => {
     
 // const updateRole = () => {
