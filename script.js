@@ -26,26 +26,23 @@ const mainMenu = () => {
             name: "choice",
             message: "What would you like to do?",
             choices: [
-                "Add department",
+                "View employees",
                 "View departments",
-                "Add role",
                 "View roles",
                 "Add employee",
-                "View employees",
+                "Add department",
+                "Add role",
                 "Update employee role",
                 "Exit"
             ]
         }
     ]).then(({choice}) => {
 		switch(choice) {
-            case "Add department":
-				addDept();
+            case "View employees":
+                viewEmployees();
                 break;
             case "View departments":
                 viewDepts();
-                break;
-            case "Add role":
-                addRole();
                 break;
             case "View roles":
                 viewRoles();
@@ -53,11 +50,14 @@ const mainMenu = () => {
             case "Add employee":
                 addEmployee();
                 break;
-            case "View employees":
-                viewEmployees();
+            case "Add department":
+				addDept();
                 break;
-             case "Update employee roles":
-                updateRoles();
+            case "Add role":
+                addRole();
+                break;
+             case "Update employee role":
+                updateRole();
                 break;
 			case "Exit":
 				connection.end();
@@ -65,17 +65,16 @@ const mainMenu = () => {
 	});
 };
 
-
-// const addDept = () => {
+// const viewEmployees = () => {
 
 // const viewDepts = () => {
-
-// const addRole = () => {
 
 // const viewRoles = () => {
 
 // const addEmployee = () => {
 
-// const viewEmployees = () => {
+// const addDept = () => {
 
-// const updateRoles = () => {
+// const addRole = () => {
+    
+// const updateRole = () => {
