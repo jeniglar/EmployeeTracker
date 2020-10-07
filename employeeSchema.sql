@@ -4,12 +4,9 @@ CREATE DATABASE employeeTracker_db;
 
 USE employeeTracker_db;
 
-CREATE TABLE employees(
+CREATE TABLE departments(
 id INT NOT NULL AUTO_INCREMENT,
-firstName VARCHAR(30) NOT NULL,
-lastName VARCHAR(30) NOT NULL,
-roleId INT NOT NULL,
-managerId INT,
+name VARCHAR(30) NOT NULL,
 PRIMARY KEY (id)
 );
 
@@ -18,12 +15,17 @@ id INT NOT NULL AUTO_INCREMENT,
 title VARCHAR(30) NOT NULL,
 salary DECIMAL(10, 2) NOT NULL, 
 departmentId INT NOT NULL,
-PRIMARY KEY (id)
+PRIMARY KEY (id),
+FOREIGN KEY (departmentId) REFERENCES departments(id)
 );
 
-CREATE TABLE departments(
+CREATE TABLE employees(
 id INT NOT NULL AUTO_INCREMENT,
-deptName VARCHAR(30) NOT NULL,
-PRIMARY KEY (id)
+firstName VARCHAR(30) NOT NULL,
+lastName VARCHAR(30) NOT NULL,
+roleId INT NOT NULL,
+managerId INT,
+PRIMARY KEY (id),
+FOREIGN KEY (roleId) REFERENCES roles(id)
 );
 

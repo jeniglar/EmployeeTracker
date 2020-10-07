@@ -64,3 +64,18 @@ const mainMenu = () => {
 		}
 	});
 };
+
+
+// const addDept = () => {
+
+// const viewDepts = () => {
+
+// const addRole = () => {
+
+// const viewRoles = () => {
+
+// const addEmployee = () => {
+
+// const viewEmployees = () => {
+
+// const updateRoles = () => {
