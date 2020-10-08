@@ -232,7 +232,7 @@ const updateRole = () => {
                     choices: roleList
                 }
             ]).then((answer) => {
-                connection.query("UPDATE employees SET roleId=answer.newRole WHERE id=answer.selectedEmployee", function (err, postData) {
+                connection.query("UPDATE employees SET roleId=? WHERE id=?", [answer.newRole, answer.selectedEmployee], function (err, postData) {
                     if (err)
                         throw err;
                     console.log("This role has successfully been updated!");
